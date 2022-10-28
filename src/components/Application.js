@@ -76,7 +76,6 @@ export default function Application(props) {
       data: appointment
     }
     return axios(req).then(response => {
-      console.log("response from delete axios===>", response);
       setState({ ...state, appointments });
     })
   }
@@ -125,4 +124,4 @@ export default function Application(props) {
       </section>
     </main>
   )
-}
+};
