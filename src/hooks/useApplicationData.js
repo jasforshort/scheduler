@@ -28,6 +28,17 @@ export default function useApplicationData() {
     })
   }, []);
 
+  function findDay(day) {
+    const daysOfWeek = {
+      Monday: 0,
+      Tuesday: 1,
+      Wednesday: 2,
+      Thursday: 3,
+      Friday: 4
+    }
+    return daysOfWeek[day]
+  }
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -39,6 +50,27 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const dayOfWeek = findDay(state.day)
+
+    let day = {
+      ...state.days[dayOfWeek],
+      spots: state.days[dayOfWeek]
+    }
+
+    if (!state.appointments[id].interview) {
+      day = {
+        ...state.days[dayOfWeek],
+        spots: state.days[dayOfWeek].spots - 1
+      }
+    } else {
+      day = {
+        ...state.days[dayOfWeek],
+        spots: state.days[dayOfWeek].spots
+      }
+    }
+
+    let days = state.days
+    days[dayOfWeek] = day;
 
     const url = `http://localhost:8001/api/appointments/${id}`;
 
@@ -48,7 +80,7 @@ export default function useApplicationData() {
       data: appointment
     }
     return axios(req).then(response => {
-      setState({ ...state, appointments })
+      setState({ ...state, appointments, days })
     })
   }
 
@@ -62,6 +94,16 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const dayOfWeek = findDay(state.day)
+
+    const day = {
+      ...state.days[dayOfWeek],
+      spots: state.days[dayOfWeek].spots + 1
+    }
+
+    let days = state.days
+    days[dayOfWeek] = day;
+
     const url = `http://localhost:8001/api/appointments/${id}`;
 
     let req = {
@@ -71,7 +113,7 @@ export default function useApplicationData() {
     }
     return axios(req).then(response => {
       console.log("response from delete axios===>", response);
-      setState({ ...state, appointments });
+      setState({...state, appointments, days});
     })
 
   }
