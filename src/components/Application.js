@@ -30,7 +30,6 @@ export default function Application(props) {
   return (
     <main className="layout">
       <section className="sidebar">
-
         <img
           className="sidebar--centered"
           src="images/logo.png"
