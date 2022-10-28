@@ -70,8 +70,8 @@ export default function Application(props) {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            value={day}
-            onChange={setDay}
+            value={days}
+            onChange={setDays}
           />
         </nav>        <img
           className="sidebar__lhl sidebar--centered"
