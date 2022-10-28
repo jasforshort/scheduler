@@ -112,7 +112,6 @@ export default function useApplicationData() {
       data: appointment
     }
     return axios(req).then(response => {
-      console.log("response from delete axios===>", response);
       setState({...state, appointments, days});
     })
 
