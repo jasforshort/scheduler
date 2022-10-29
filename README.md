@@ -34,3 +34,11 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+
+!["Screenshot of Appointment Page"](https://github.com/jasforshort/scheduler/blob/master/docs/appointment-form.png)
+
+!["Screenshot of Adding a Appointment"](https://github.com/jasforshort/scheduler/blob/master/docs/appointment-new.png)
+
+!["Screenshot of Deleting Appointment"](https://github.com/jasforshort/scheduler/blob/master/docs/appointment-delete.png)
