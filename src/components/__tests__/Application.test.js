@@ -48,7 +48,7 @@ describe("Application", () => {
   });
 
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
+  it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
     //  1. Render the Application.
     const { container, debug } = render(<Application />);
 
@@ -75,7 +75,7 @@ describe("Application", () => {
       queryByText(day, "Monday")
     );
     // 8. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining".
-    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();//2 spots remaining failes the test
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();//2 spots remaining fails the test
 
   });
 
